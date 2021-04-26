@@ -2,11 +2,24 @@
 # Author: Megan Black
 # Description: Program that says if the year entered by the user is a leap year or not.
 
-year = input("Please enter a year: ")
-year_i = int(year)
-if(year_i % 4 == 0 and year_i % 100 == 0 and year_i % 400 == 0):
+# Function to error check user input
+def check():
+  year = input("Please enter a year: ")
+  while(1):
+    if year.isdigit():
+      if len(year) == 4:
+        return int(year)
+      else:
+        year = input("You didn't enter a good value, enter a valid year: ")
+    else:
+      year = input("You didn't enter a good value, enter a valid year: ")
+  
+
+
+year = check()
+if year % 4 == 0 and year % 100 == 0 and year % 400 == 0:
   print(year + " is a leap year")
-elif(year_i % 4 == 0 and year_i % 100 != 0):
-  print(year + "is a leap year")
+elif year % 4 == 0 and year % 100 != 0:
+  print(str(year) + " is a leap year")
 else:
-  print(year + "is not a leap year") 
+  print(str(year) + " is not a leap year") 
